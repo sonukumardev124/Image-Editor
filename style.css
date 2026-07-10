@@ -140,3 +140,6 @@ main section .right .filter input::-webkit-slider-thumb {
     cursor: pointer;
     margin-top: -8px;
 }
+#image-canvas{
+    background-color: red;
+}
