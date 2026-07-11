@@ -1,4 +1,4 @@
-const filters = {
+let filters = {
          brightness: {
                   value: 100,
                   min: 0,
@@ -58,6 +58,8 @@ const imageCanvas = document.querySelector("#image-canvas")
 const imgInput = document.querySelector("#image-input")
 const filtersContainer = document.querySelector(".filters")
 const canvasCtx = imageCanvas.getContext("2d")
+const resetBtn = document.querySelector("#reset-btn")
+const downloadBtn = document.querySelector("#download-btn")
 let file = null
 let image = null
 
@@ -86,10 +88,13 @@ function createFilterElement(name, unit = "%", value, min, max) {
 
          return div
 }
-Object.keys(filters).forEach(key => {
-         const filterElement = createFilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max)
-         filtersContainer.appendChild(filterElement)
-})
+function createFilters() {
+         Object.keys(filters).forEach(key => {
+                  const filterElement = createFilterElement(key, filters[key].unit, filters[key].value, filters[key].min, filters[key].max)
+                  filtersContainer.appendChild(filterElement)
+         })
+}
+createFilters()
 
 imgInput.addEventListener("change", (event) => {
          file = event.target.files[0]
@@ -122,3 +127,77 @@ function applyFilters() {
          `.trim()
          canvasCtx.drawImage(image, 0, 0)
 }
+function resetFilters() {
+         resetBtn.addEventListener("click", () => {
+                  filters = {
+                           brightness: {
+                                    value: 100,
+                                    min: 0,
+                                    max: 200,
+                                    unit: "%"
+                           },
+                           contrast: {
+                                    value: 100,
+                                    min: 0,
+                                    max: 200,
+                                    unit: "%"
+                           },
+                           saturation: {
+                                    value: 0,
+                                    min: 0,
+                                    max: 200,
+                                    unit: "%"
+                           },
+                           hueRotation: {
+                                    value: 0,
+                                    min: 0,
+                                    max: 360,
+                                    unit: "deg"
+                           },
+                           blur: {
+                                    value: 0,
+                                    min: 0,
+                                    max: 20,
+                                    unit: "px"
+                           },
+                           grayscale: {
+                                    value: 0,
+                                    min: 0,
+                                    max: 100,
+                                    unit: "%"
+                           },
+                           sepia: {
+                                    value: 0,
+                                    min: 0,
+                                    max: 100,
+                                    unit: "%"
+                           },
+                           opacity: {
+                                    value: 100,
+                                    min: 0,
+                                    max: 100,
+                                    unit: "%"
+                           },
+                           invert: {
+                                    value: 0,
+                                    min: 0,
+                                    max: 100,
+                                    unit: "%"
+                           },
+                  }
+                  applyFilters()
+                  filtersContainer.innerHTML = ""
+                  createFilters()
+         })
+}
+resetFilters()
+
+function downloadImage() {
+         downloadBtn.addEventListener("click", () => {
+                  const link = document.createElement("a")
+                  link.download = "edited-image.png"
+                  link.href = imageCanvas.toDataURL()
+                  link.click()
+         })
+}
+downloadImage()
