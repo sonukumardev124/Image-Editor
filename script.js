@@ -60,6 +60,7 @@ const filtersContainer = document.querySelector(".filters")
 const canvasCtx = imageCanvas.getContext("2d")
 const resetBtn = document.querySelector("#reset-btn")
 const downloadBtn = document.querySelector("#download-btn")
+const presetsContainer = document.querySelector(".presets")
 let file = null
 let image = null
 
@@ -201,3 +202,133 @@ function downloadImage() {
          })
 }
 downloadImage()
+
+const presets = {
+         drama: {
+                  brightness: 110,
+                  contrast: 130,
+                  saturation: 120,
+                  hueRotation: 0,
+                  blur: 0,
+                  grayscale: 10,
+                  sepia: 0,
+                  opacity: 100,
+                  invert: 0,
+         },
+         vintage: {
+                  brightness: 90,
+                  contrast: 110,
+                  saturation: 80,
+                  hueRotation: 15,
+                  blur: 0,
+                  grayscale: 20,
+                  sepia: 40,
+                  opacity: 100,
+                  invert: 0,
+         },
+         oldschool: {
+                  brightness: 95,
+                  contrast: 120,
+                  saturation: 60,
+                  hueRotation: 0,
+                  blur: 0,
+                  grayscale: 50,
+                  sepia: 30,
+                  opacity: 100,
+                  invert: 0,
+         },
+         cyberpunk: {
+                  brightness: 110,
+                  contrast: 140,
+                  saturation: 160,
+                  hueRotation: 290,
+                  blur: 0,
+                  grayscale: 0,
+                  sepia: 0,
+                  opacity: 100,
+                  invert: 0,
+         },
+         softGlow: {
+                  brightness: 120,
+                  contrast: 90,
+                  saturation: 110,
+                  hueRotation: 0,
+                  blur: 2,
+                  grayscale: 0,
+                  sepia: 10,
+                  opacity: 100,
+                  invert: 0,
+         },
+         noir: {
+                  brightness: 80,
+                  contrast: 130,
+                  saturation: 0,
+                  hueRotation: 0,
+                  blur: 0,
+                  grayscale: 100,
+                  sepia: 10,
+                  opacity: 100,
+                  invert: 0,
+         },
+         warmSunset: {
+                  brightness: 105,
+                  contrast: 115,
+                  saturation: 120,
+                  hueRotation: 20,
+                  blur: 0,
+                  grayscale: 0,
+                  sepia: 30,
+                  opacity: 100,
+                  invert: 0,
+         },
+         coolTone: {
+                  brightness: 100,
+                  contrast: 110,
+                  saturation: 90,
+                  hueRotation: 200,
+                  blur: 0,
+                  grayscale: 5,
+                  sepia: 0,
+                  opacity: 100,
+                  invert: 0,
+         },
+         faded: {
+                  brightness: 105,
+                  contrast: 80,
+                  saturation: 70,
+                  hueRotation: 0,
+                  blur: 0,
+                  grayscale: 10,
+                  sepia: 20,
+                  opacity: 100,
+                  invert: 0,
+         },
+         retroPop: {
+                  brightness: 115,
+                  contrast: 130,
+                  saturation: 150,
+                  hueRotation: 45,
+                  blur: 0,
+                  grayscale: 0,
+                  sepia: 0,
+                  opacity: 100,
+                  invert: 0,
+         },
+}
+
+Object.keys(presets).forEach(presetName => {
+         const presetButton = document.createElement("button")
+         presetButton.classList.add("btn")
+         presetButton.innerHTML = presetName
+         presetsContainer.appendChild(presetButton)
+
+         presetButton.addEventListener('click', () => {
+                  const preset = presets[presetName]
+                  Object.keys(preset).forEach(filterName =>{
+                           filters[filterName].value = preset[filterName]
+                  })
+                  applyFilters()
+                  filtersContainer.innerHTML = ""
+                  createFilters()
+         })
+})
