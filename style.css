@@ -27,8 +27,20 @@ main section {
 
 main section .top {
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     gap: var(--gutter-md);
+     i{
+            font-size: var(--font-size-2xl);
+            color: var(--bg-image-color);
+            background-color: var(--bg-primary-color);
+            border-radius: var(--border-radius-2xl);
+        }
+    h4{
+        
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        color: var(--text-primary-color);
+    }
 }
 
 .btn {
@@ -59,7 +71,8 @@ main section .left {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: var(--gutter-lg);
+    gap: var(--gutter-3xl);
+    padding-left: var(--padding-3xl);
     width: 80%;
 }
 
