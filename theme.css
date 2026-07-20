@@ -4,8 +4,9 @@
     --bg-primary-color: rgb(17,17,17);
     --bg-secondary-color: rgb(34,34,34);
     --bg-active-color: rgb(233,233,233);
-    --bg-danger-color: rgb(184, 38, 38);
-    --bg-success-color: rgb(53, 216, 53);
+    --bg-image-color: rgb(58, 32, 172);
+    --bg-reset-color: rgb(41, 39, 39);
+    --bg-success-color: rgb(4, 119, 4);
 
     /* text colors */
     --text-primary-color: rgb(237,237,237);

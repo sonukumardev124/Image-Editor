@@ -36,15 +36,15 @@ main section .top {
     border: none;
     outline: none;
     cursor: pointer;
-    border-radius: var(--border-radius-sm);
-    background-color: var(--bg-active-color);
-    color: var(--text-active-color);
+    border-radius: var(--border-radius-2xl);
+    background-color: var(--bg-image-color);
+    color: var(--text-primary-color);
     font-size: var(--font-size-md);
     font-weight: 600;
 }
 
 #reset-btn {
-    background-color: var(--bg-danger-color);
+    background-color: var(--bg-reset-color);
     color: var(--text-primary-color);
     font-size: var(--font-size-md);
 }
@@ -60,7 +60,7 @@ main section .left {
     align-items: center;
     flex-direction: column;
     gap: var(--gutter-lg);
-    width: 70%;
+    width: 80%;
 }
 
 main section .right {
@@ -78,8 +78,8 @@ main section .top {
 }
 
 main section .bottom {
-    width: 100%;
-    aspect-ratio: 5/3;
+    width: 70%;
+    aspect-ratio: 4/3;
     background-color: var(--bg-secondary-color);
     border-radius: var(--border-radius-xl);
     padding: var(--padding-2xl);
@@ -134,7 +134,7 @@ main section .right .filter input::-webkit-slider-runnable-track {
 main section .right .filter input::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
-    background-color: red;
+    background-color: rgb(38, 38, 134);
     appearance: none;
     border-radius: 50%;
     cursor: pointer;
